@@ -113,7 +113,7 @@
 #include "zaxxon.h"
 #undef CARTRIDGE_INCLUDE_PRIVATE_API
 
-/* #define DEBUGCART */
+// #define DEBUGCART
 
 /* FIXME: test and then remove all the old code */
 #define USESLOTS /* define to use passthrough code */
@@ -467,6 +467,13 @@ void cart_config_changed_slotmain(uint8_t mode_phi1, uint8_t mode_phi2, unsigned
 
     export_slotmain.ultimax_phi1 = (mode_phi1 & 1) & ((mode_phi1 >> 1) & 1);
     export_slotmain.ultimax_phi2 = export_slotmain.game & (export_slotmain.exrom ^ 1) & ((~wflag >> CMODE_PHI2_RAM_SHIFT) & 1);
+
+    log_message(
+        LOG_DEFAULT,
+        "game %u, exrom %u, bank %u, export_ram %u, ultimax_phi1 %u, ultimax_phi2 %u",
+        export_slotmain.game, export_slotmain.exrom, ((mode_phi2 >> CMODE_BANK_SHIFT) & CMODE_BANK_MASK),
+        export_ram, export_slotmain.ultimax_phi1, export_slotmain.ultimax_phi2
+    );
 
     /* TODO
     cart_romhbank_phi1_set_slotmain((mode_phi1 >> CMODE_BANK_SHIFT) & CMODE_BANK_MASK);

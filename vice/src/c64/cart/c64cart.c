@@ -57,7 +57,7 @@
 #include "translate.h"
 #include "util.h"
 
-/* #define DEBUGCART */
+#define DEBUGCART
 
 #ifdef DEBUGCART
 #define DBG(x)  printf x; fflush(stdout);
@@ -222,6 +222,10 @@ static cartridge_info_t cartlist[] = {
     { CARTRIDGE_NAME_ISEPIC,              CARTRIDGE_ISEPIC,              CARTRIDGE_GROUP_RAMEX },
     { CARTRIDGE_NAME_RAMCART,             CARTRIDGE_RAMCART,             CARTRIDGE_GROUP_RAMEX },
     { CARTRIDGE_NAME_REU,                 CARTRIDGE_REU,                 CARTRIDGE_GROUP_RAMEX },
+    { CARTRIDGE_NAME_BLACKBOX,            CARTRIDGE_BLACKBOX,            CARTRIDGE_GROUP_UTIL },
+    { CARTRIDGE_NAME_BLACKBOX4,           CARTRIDGE_BLACKBOX_4,          CARTRIDGE_GROUP_UTIL },
+    { CARTRIDGE_NAME_BLACKBOX8,           CARTRIDGE_BLACKBOX_8,          CARTRIDGE_GROUP_UTIL },
+    { CARTRIDGE_NAME_BLACKBOX9,           CARTRIDGE_BLACKBOX_9,          CARTRIDGE_GROUP_UTIL },
 
     { NULL, 0, 0 }
 };

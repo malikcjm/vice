@@ -136,9 +136,10 @@
 #include "warpspeed.h"
 #include "westermann.h"
 #include "zaxxon.h"
+#include "blackbox9.h"
 #undef CARTRIDGE_INCLUDE_PRIVATE_API
 
-/* #define DEBUGCART */
+#define DEBUGCART
 
 #ifdef DEBUGCART
 #define DBG(x)  printf x
@@ -1258,6 +1259,9 @@ void cart_attach(int type, uint8_t *rawcart)
         case CARTRIDGE_ZAXXON:
             zaxxon_config_setup(rawcart);
             break;
+        case CARTRIDGE_BLACKBOX_9:
+            blackbox_v9_config_setup(rawcart);
+            break;
         default:
             DBG(("CART: no attach hook %d\n", type));
             break;
@@ -1776,6 +1780,9 @@ void cart_detach(int type)
         case CARTRIDGE_ZAXXON:
             zaxxon_detach();
             break;
+        case CARTRIDGE_BLACKBOX_9:
+            blackbox_v9_detach();
+            break;
         default:
             DBG(("CART: no detach hook ID: %d\n", type));
             break;
@@ -2019,6 +2026,9 @@ void cartridge_init_config(void)
             break;
         case CARTRIDGE_ZAXXON:
             zaxxon_config_init();
+            break;
+        case CARTRIDGE_BLACKBOX_9:
+            blackbox_v9_config_init();
             break;
         /* FIXME: add all missing ones instead of using the default */
         case CARTRIDGE_NONE:
